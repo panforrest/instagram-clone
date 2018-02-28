@@ -37,10 +37,15 @@ router.get('/:username', (req, res) => {
         	})
         }
 
-        res.json({
-        	confirmation: 'success',
-        	data: response.body
-        })
+        const data = {
+            img: response.body.user.profile_pic_url
+        }
+
+        res.render('index',data)
+        // res.json({
+        // 	confirmation: 'success',
+        // 	data: response.body
+        // })
 
     })
 })
