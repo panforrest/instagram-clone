@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 
 router.get('/:username', (req, res) => {
 	const username = req.params.username
-	const instagramAPI = 'https://www.instagram.com/14streety/?__a=1'
+	const instagramAPI = 'https://www.instagram.com/'+username+'/?__a=1'
 
 	// res.json({
 	// 	confirmation: 'success',
