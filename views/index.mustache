@@ -11,10 +11,12 @@
         	<h1>{{user.full_name}}</h1>
         	<div class="row">
         	    {{#user.media.nodes}}
-	                <div class="col-md-4">
-	                    
-	                    <img src={{thumbnail_src}}>
-	                </div>
+                <div class="col-md-4">
+                    <div style="padding:24px">
+                        <img style="width:100%" src="{{thumbnail_src}}" />
+                    </div>
+                    
+                </div>
                 {{/user.media.nodes}}
         	</div>	
         </div>
