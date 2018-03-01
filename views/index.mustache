@@ -10,14 +10,25 @@
         <div class="container">
         	<h1>{{user.full_name}}</h1>
         	<div class="row">
-        	    {{#user.media.nodes}}
-                <div class="col-md-4">
-                    <div style="padding:24px">
-                        <img style="width:100%" src="{{thumbnail_src}}" />
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="row">
+
+
+                        {{#user.media.nodes}}
+                        <div class="col-md-4">
+                            <div style="padding:12px">
+                                <img style="width:100%" src="{{thumbnail_src}}" />
+                            </div>
+                            
+                        </div>
+                        {{/user.media.nodes}}
+
                     </div>
-                    
+
                 </div>
-                {{/user.media.nodes}}
+
+
+        	    
         	</div>	
         </div>
     </body>
