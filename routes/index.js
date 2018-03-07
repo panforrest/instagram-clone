@@ -21,11 +21,6 @@ router.get('/:username', (req, res) => {
 	const username = req.params.username
 	const instagramAPI = 'https://www.instagram.com/'+username+'/?__a=1'
 
-	// res.json({
-	// 	confirmation: 'success',
-	// 	username: username
- //    })
-
     superagent.get(instagramAPI)
     .query(null)
     .set('Accept', 'application/json')
@@ -35,18 +30,9 @@ router.get('/:username', (req, res) => {
         		confirmation: 'fail',
         		message: err.message
         	})
+            return
         }
-
-        // const data = {
-        //     img: response.body.user.profile_pic_url
-        // }
-
         res.render('index',response.body)
-        // res.json({
-        // 	confirmation: 'success',
-        // 	data: response.body
-        // })
-
     })
 })
 
