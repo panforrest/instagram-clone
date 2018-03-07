@@ -26,10 +26,11 @@ router.get('/:username', (req, res) => {
     .set('Accept', 'application/json')
     .end((err, response) => {
         if (err) {
-        	res.json({
-        		confirmation: 'fail',
-        		message: err.message
-        	})
+        	// res.json({
+        	// 	confirmation: 'fail',
+        	// 	message: err.message
+        	// })
+            res.render('error', null)
             return
         }
         res.render('index',response.body)
