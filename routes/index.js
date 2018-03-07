@@ -44,4 +44,19 @@ router.get('/:username', (req, res) => {
     })
 })
 
+router.get('/p/:postcode', (req, res) => {
+    const postcode = req.params.postcode
+    const myPostcode = 'https://www.instagram.com/p/'+postcode
+    const data = {
+        myPostcode: myPostcode
+    }
+
+    res.render('picture', data)
+
+//     res.json({
+//         confirmation: 'success',
+//         postcode: 'postcode'
+//     })
+})
+
 module.exports = router
