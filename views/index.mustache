@@ -4,14 +4,37 @@
     	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
 
         <style type="text/css">
+            body {
+                background: #f9f9f9;
+            }
             .nav {
-                background: #fff
+                background: #fff;
+            }
+            .main {
+                padding-top: 72px;
+            }
+            .profile-icon {
+                border-radius: 50%;
+                border: 1px solid #ededed
+            }
+            .header {
+                font-size: 32px; 
+                line-height: 40px; 
+                font-weight: 200;
+            }
+            .post {
+                padding: 0px;
+                margin-bottom: 16px;
+                margin-top: 16px
+            }
+            .post img {
+                width: 100%;
             }
         </style>
     </head>
 
 
-    <body style="background:#f9f9f9">
+    <body>
         <nav class="navbar navbar-default navbar-fixed-top nav">
             <div class="container">
                 NAV BAR
@@ -19,18 +42,18 @@
 
         </nav>
 
-        <div class="container" style="padding-top:72px">
+        <div class="container main">
         	
         	<div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="row">
                         
                         <div class="col-mid-4">
-                            <img style="border-radius:50%;border:1px solid #ededed" src="{{user.profile_pic_url}}">
+                            <img class="profile_icon" src="{{user.profile_pic_url}}">
                         </div>
 
                         <div class="col-mid-8">
-                            <h1 style="font-size: 32px; line-height: 40px; font-weight: 200;">{{user.username}}</h1>
+                            <h1 class="header">{{user.username}}</h1>
 
                             <div class="row">
                                 <div class="col-md-2">
@@ -54,8 +77,8 @@
                     <div class="row">
                         {{#user.media.nodes}}
                         <div class="col-md-4">
-                            <div style="padding:0px;margin-bottom:16px;margin-top:16px">
-                                <img style="width:100%" src="{{thumbnail_src}}" />
+                            <div class="post">
+                                <img src="{{thumbnail_src}}" />
                             </div>
                             
                         </div>
