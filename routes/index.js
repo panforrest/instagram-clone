@@ -21,19 +21,12 @@ router.get('/:username', (req, res) => {
 	const username = req.params.username
 	const instagramAPI = 'https://www.instagram.com/'+username+'/?__a=1'
 
-    // const err = {
-    //     message: err.message
-    // }
-
     superagent.get(instagramAPI)
     .query(null)
     .set('Accept', 'application/json')
     .end((err, response) => {
         if (err) {
-        	// res.json({
-        	// 	confirmation: 'fail',
-        	// 	message: err.message
-        	// })
+
             const data = {
                 message: err.message || 'Check your spelling'
             }
@@ -44,19 +37,15 @@ router.get('/:username', (req, res) => {
     })
 })
 
-router.get('/p/:postcode', (req, res) => {
+router.get('/:username/:postcode', (req, res) => {
+    const username = req.params.username
     const postcode = req.params.postcode
-    const myPostcode = 'https://www.instagram.com/p/'+postcode
-    const data = {
-        myPostcode: myPostcode
-    }
 
-    res.render('picture', data)
-
-//     res.json({
-//         confirmation: 'success',
-//         postcode: 'postcode'
-//     })
+    res.json({
+        confirmation: 'success',
+        postcode: 'postcode',
+        username: username
+    })
 })
 
 module.exports = router
