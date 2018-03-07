@@ -1,66 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-    	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
-
-        <style type="text/css">
-            body {
-                background: #f9f9f9;
-            }
-            .nav {
-                background: #fff;
-            }
-            .main {
-                padding-top: 96px;
-            }
-            .profile-icon {
-                border-radius: 50%;
-                border: 1px solid #ededed
-            }
-            .header {
-                font-size: 32px; 
-                line-height: 40px; 
-                font-weight: 200;
-            }
-            .post {
-                padding: 0px;
-                margin-bottom: 16px;
-                margin-top: 16px
-            }
-            .post img {
-                width: 100%;
-            }
-            .nav-logo {
-                padding: 12px
-            }
-            .search-container {
-                padding: 12px 0px 0px 0px
-            }
-        </style>
+    	{{>head}}
     </head>
 
 
     <body>
-        <nav class="navbar navbar-default navbar-fixed-top nav">
-            <div class="container">
-                
-                <div class="row">
-                    <div class="col-md-3 col-md-offset-2">
-                        <div class="nav-logo">
-                            <img src="https://lh3.googleusercontent.com/4UvIeTsZp-bLg7Rp02v736Ybt1XLvEC-atG-WUzXKFDkJoKnZtdW_Fudlz3rfON7TjzP7ku-pFVUDyYh3iJH6tBN">
-                        </div>                        
-                    </div>
-                    <div class="col-md-4">
-                        <div class="search-container">
-                            <input class="form-control" style="background: #f9f9f9" type="text" placeholder="Search..." />
-                        </div>
-                        
-                    </div>
-
-                </div>
-            </div>
-
-        </nav>
+        {{>nav}}
 
         <div class="container main">        	
         	<div class="row">
