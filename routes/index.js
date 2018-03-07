@@ -21,6 +21,10 @@ router.get('/:username', (req, res) => {
 	const username = req.params.username
 	const instagramAPI = 'https://www.instagram.com/'+username+'/?__a=1'
 
+    // const err = {
+    //     message: err.message
+    // }
+
     superagent.get(instagramAPI)
     .query(null)
     .set('Accept', 'application/json')
@@ -30,7 +34,10 @@ router.get('/:username', (req, res) => {
         	// 	confirmation: 'fail',
         	// 	message: err.message
         	// })
-            res.render('error', null)
+            const data = {
+                message: err.message || 'Check your spelling'
+            }
+            res.render('error', data)    //res.render('error', null)
             return
         }
         res.render('index',response.body)
