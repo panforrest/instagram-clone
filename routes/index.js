@@ -55,7 +55,8 @@ router.get('/:username/:postcode', (req, res) => {
             return
         }
 
-        const posts = response.body.user.media.nodes
+        const user = response.body.user
+        const posts = user.media.nodes
         let selectedPost = null
 
         for (let i=0; i<posts.length; i++){
@@ -72,8 +73,8 @@ router.get('/:username/:postcode', (req, res) => {
         }
 
         selectedPost['user'] = {
-            username: response.body.user.username,
-            profile_pic_url: response.body.user.profile_pic_url
+            username: user.username,
+            profile_pic_url: user.profile_pic_url
         }
 
         res.render('post', selectedPost)
