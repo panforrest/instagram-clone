@@ -40,12 +40,49 @@ router.get('/:username', (req, res) => {
 router.get('/:username/:postcode', (req, res) => {
     const username = req.params.username
     const postcode = req.params.postcode
+    const instagramAPI = 'https://www.instagram.com/'+username+'/?__a=1'
 
-    res.json({
-        confirmation: 'success',
-        postcode: 'postcode',
-        username: username
+    superagent.get(instagramAPI)
+    .query(null)
+    .set('Accept', 'application/json')
+    .end((err, response) => {
+        if (err) {
+
+            const data = {
+                message: err.message || 'Check your spelling'
+            }
+            res.render('error', data)    //res.render('error', null)
+            return
+        }
+
+        const posts = response.body.user.media.nodes
+        let selectedPost = null
+
+        for (let i=0; i<posts.length; i++){
+            const post = posts[i]
+            if (post.code == postcode){
+                selectedPost = post
+                break
+            }
+        }
+
+        if (selectedPost == null){
+            res.render('error', {message: 'Post not found!'})
+            return
+        }
+
+        res.json({
+            confirmation: 'success',
+            data: selectedPost
+        })
+        // res.render('index',response.body)
     })
+
+    // res.json({
+    //     confirmation: 'success',
+    //     postcode: 'postcode',
+    //     username: username
+    // })
 })
 
 module.exports = router
