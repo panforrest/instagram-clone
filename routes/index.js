@@ -70,6 +70,12 @@ router.get('/:username/:postcode', (req, res) => {
             res.render('error', {message: 'Post not found!'})
             return
         }
+
+        selectedPost['user'] = {
+            username: response.body.user.username,
+            profile_pic_url: response.body.user.profile_pic_url
+        }
+
         res.render('post', selectedPost)
     })
 })
