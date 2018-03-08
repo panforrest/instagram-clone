@@ -70,19 +70,8 @@ router.get('/:username/:postcode', (req, res) => {
             res.render('error', {message: 'Post not found!'})
             return
         }
-
-        res.json({
-            confirmation: 'success',
-            data: selectedPost
-        })
-        // res.render('index',response.body)
+        res.render('post', selectedPost)
     })
-
-    // res.json({
-    //     confirmation: 'success',
-    //     postcode: 'postcode',
-    //     username: username
-    // })
 })
 
 module.exports = router

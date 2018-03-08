@@ -13,21 +13,21 @@
                 <div class="col-md-8 col-md-offset-2">
                     <div class="row">
                         
-                        <div class="col-mid-4">
+                        <div class="col-md-4">
                             <img class="profile_icon" src="{{user.profile_pic_url}}">
                         </div>
 
-                        <div class="col-mid-8">
+                        <div class="col-md-8">
                             <h1 class="header">{{user.username}}</h1>
 
                             <div class="row">
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <strong>{{user.media.count}}</storng><span> posts</span>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <strong>{{user.followed_by.count}}</storng><span> followers</span>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <strong>{{user.follows.count}}</storng><span> followings</span>
                                 </div>
 
@@ -43,7 +43,7 @@
                         {{#user.media.nodes}}
                         <div class="col-md-4">
                             <div class="post">
-                                <a href="/p/{{code}}"><img src="{{thumbnail_src}}" /></a>
+                                <a href="/{{user.username}}/{{code}}"><img src="{{thumbnail_src}}" /></a>
                             </div>
                             
                         </div>
