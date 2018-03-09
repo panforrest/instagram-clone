@@ -55,20 +55,10 @@ router.get('/:username/:postcode', (req, res) => {
     const postcode = req.params.postcode
     const instagramAPI = 'https://www.instagram.com/'+username+'/?__a=1'
 
-    superagent.get(instagramAPI)
-    .query(null)
-    .set('Accept', 'application/json')
-    .end((err, response) => {
-        if (err) {
-
-            const data = {
-                message: err.message || 'Check your spelling'
-            }
-            res.render('error', data)    //res.render('error', null)
-            return
-        }
-
-        const user = response.body.user
+    utils.HTTP.get(instagramAPI, null)
+    .then(data => {
+        // res.render('index', data)
+        const user = data.user
         const posts = user.media.nodes
         let selectedPost = null
 
@@ -91,7 +81,55 @@ router.get('/:username/:postcode', (req, res) => {
         }
 
         res.render('post', selectedPost)
+
+
     })
+    .catch(err => {
+        const data = {
+            message: err.message || 'Check your spelling!'
+        }
+
+        res.render('error', data)
+
+    })
+
+    // superagent.get(instagramAPI)
+    // .query(null)
+    // .set('Accept', 'application/json')
+    // .end((err, response) => {
+    //     if (err) {
+
+    //         const data = {
+    //             message: err.message || 'Check your spelling'
+    //         }
+    //         res.render('error', data)    //res.render('error', null)
+    //         return
+    //     }
+
+    //     const user = response.body.user
+    //     const posts = user.media.nodes
+    //     let selectedPost = null
+
+    //     for (let i=0; i<posts.length; i++){
+    //         const post = posts[i]
+    //         if (post.code == postcode){
+    //             selectedPost = post
+    //             break
+    //         }
+    //     }
+
+    //     if (selectedPost == null){
+    //         res.render('error', {message: 'Post not found!'})
+    //         return
+    //     }
+
+    //     selectedPost['user'] = {
+    //         username: user.username,
+    //         profile_pic_url: user.profile_pic_url
+    //     }
+
+    //     res.render('post', selectedPost)
+    // })
 })
 
 module.exports = router
